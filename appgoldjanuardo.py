@@ -100,7 +100,7 @@ def read_database():
         showed_index = request.form['inputIndex']
         showed_keywords = request.form['inputKeywords']
         if len(showed_index) > 0:
-            print("AAAAAAAAAA")
+            print("Index Scenario")
             result_from_reading_index = read_table(target_index=showed_index)
             previous_text = result_from_reading_index[1].decode('latin1')
             cleaned_text = result_from_reading_index[2].decode('latin1')
@@ -111,7 +111,7 @@ def read_database():
             json_response = jsonify(json_response)
             return json_response
         elif len(showed_keywords) > 0:
-            print("BBBBBBBBB")
+            print("Keywords Scenario")
             result_from_reading_keyword = read_table(target_keywords=showed_keywords)
             json_response = {'showed_keywords': showed_keywords,
                              'previous_text': result_from_reading_keyword[0][1].decode('latin1'),
@@ -120,7 +120,7 @@ def read_database():
             json_response = jsonify(json_response)
             return json_response
         else:
-            print("CCCCCCCC")
+            print("Other Scenario")
             json_response = {'ERROR_WARNING': "INDEX OR KEYWORDS IS NONE"}
             json_response = jsonify(json_response)
             return json_response
